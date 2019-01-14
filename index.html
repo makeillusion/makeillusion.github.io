@@ -1,0 +1,17 @@
+<html>
+    <head>
+        <title>Illusion</title>
+        <link rel="stylesheet" type="text/css" href="main.css">
+    </head>
+    <body>
+        <div id="drop-area">
+          <form class="my-form">
+            <p>Upload image with the file dialog or by dragging and dropping image onto the dashed region</p>
+            <input type="file" id="fileElem" accept="image/*" onchange="handleFiles(this.files)">
+            <label class="button" for="fileElem">Select image</label>
+          </form>
+          <div id="gallery" /></div>
+        </div>
+        <script src="main.js"></script>
+    </body>
+</html>
