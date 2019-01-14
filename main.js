@@ -77,9 +77,9 @@ function previewFile(file) {
             base = x % step > 7 ? 230 : 25;
             if ((x % step === 0) || (x % step === (step - 1)) || (x % step === 7) || (x % step === 8)) base = 128;
             update = base + (128 + intense) / scale;
-            idata.data[ind] = update;
-            idata.data[ind + 1] = update;
-            idata.data[ind + 2] = update;
+            idata.data[ind] = intense;//update;
+            idata.data[ind + 1] = intense;//update;
+            idata.data[ind + 2] = intense;//update;
         }
         ctx.putImageData(idata, 0, 0);
         document.getElementById('gallery').appendChild(c);
