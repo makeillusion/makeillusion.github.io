@@ -72,15 +72,15 @@ function previewFile(file) {
         for (var x = 0; x < img.width; x ++) {
             ind = (y * img.width + x) * 4;
             intense = idata.data[ind] + idata.data[ind + 1] + idata.data[ind + 2];
-            base = x % 10 > 4 ? 230 : 25;
-            if ((x % 10 === 0) || (x % 10 === 9) || (x % 10 === 4) || (x % 10 === 4)) base = 128;
-            update = base + (128 + intense) / 15;
+            base = x % 16 > 7 ? 230 : 25;
+            if ((x % 16 === 0) || (x % 16 === 15) || (x % 16 === 7) || (x % 16 === 8)) base = 128;
+            update = base + (128 + intense) / 35;
             idata.data[ind] = update;
             idata.data[ind + 1] = update;
             idata.data[ind + 2] = update;
         }
         ctx.putImageData(idata, 0, 0);
         document.getElementById('gallery').appendChild(c);
-        }, 1000);
+        }, 200);
     }
 }
