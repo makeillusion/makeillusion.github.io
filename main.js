@@ -48,11 +48,37 @@ function handleFiles(files) {
 }
 
 function previewFile(file) {
-  let reader = new FileReader()
-  reader.readAsDataURL(file)
-  reader.onloadend = function() {
-    let img = document.createElement('img')
-    img.src = reader.result
-    document.getElementById('gallery').appendChild(img)
-  }
+    let reader = new FileReader()
+    reader.readAsDataURL(file)
+    reader.onloadend = function() {
+        let img = document.createElement('img')
+        img.src = reader.result
+        document.getElementById('gallery').appendChild(img)
+    
+        var c = document.createElement("canvas");
+        c.width = img.width;
+        c.height = img.height;
+        console.log("width = " + img.width);
+        var ctx = c.getContext("2d");
+        ctx.drawImage(img, 0, 0);
+        var idata = ctx.getImageData(0, 0, img.width, img.height);
+        
+        var ind;
+        var intense;
+        var update;
+        var base;
+        for (var y = 0; y < img.height; y ++)
+        for (var x = 0; x < img.width; x ++) {
+            ind = (y * img.width + x) * 4;
+            intense = idata.data[ind] + idata.data[ind + 1] + idata.data[ind + 2];
+            base = x % 10 > 4 ? 230 : 25;
+            if ((x % 10 === 0) || (x % 10 === 9) || (x % 10 === 4) || (x % 10 === 4)) base = 128;
+            update = base + (128 + intense) / 15;
+            idata.data[ind] = update;
+            idata.data[ind + 1] = update;
+            idata.data[ind + 2] = update;
+        }
+        ctx.putImageData(idata, 0, 0);
+        document.getElementById('gallery').appendChild(c);
+    }
 }
