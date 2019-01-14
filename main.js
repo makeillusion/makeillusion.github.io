@@ -54,7 +54,8 @@ function previewFile(file) {
         let img = document.createElement('img')
         img.src = reader.result
         document.getElementById('gallery').appendChild(img)
-    
+        
+        setTimeout(() => {
         var c = document.createElement("canvas");
         c.width = img.width;
         c.height = img.height;
@@ -80,5 +81,6 @@ function previewFile(file) {
         }
         ctx.putImageData(idata, 0, 0);
         document.getElementById('gallery').appendChild(c);
+        }, 1000);
     }
 }
