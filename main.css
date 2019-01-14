@@ -31,7 +31,8 @@ p {
   margin-top: 10px;
 }
 #gallery img {
-  width: 800px;
+  //width: 800px;
+  display: none;
   margin-bottom: 10px;
   margin-right: 10px;
   vertical-align: middle;

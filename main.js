@@ -56,33 +56,41 @@ function previewFile(file) {
         document.getElementById('gallery').appendChild(img)
         
         setTimeout(() => {
-        var c = document.createElement("canvas");
-        c.width = img.width;
-        c.height = img.height;
-        console.log("width = " + img.width);
-        var ctx = c.getContext("2d");
-        ctx.drawImage(img, 0, 0);
-        var idata = ctx.getImageData(0, 0, img.width, img.height);
-        
-        var ind;
-        var intense;
-        var update;
-        var base;
-        var step = 16; 
-        var scale = 35;
-        for (var y = 0; y < img.height; y ++)
-        for (var x = 0; x < img.width; x ++) {
-            ind = (y * img.width + x) * 4;
-            intense = idata.data[ind] + idata.data[ind + 1] + idata.data[ind + 2];
-            base = x % step > 7 ? 230 : 25;
-            if ((x % step === 0) || (x % step === (step - 1)) || (x % step === 7) || (x % step === 8)) base = 128;
-            update = base + (128 + intense) / scale;
-            idata.data[ind] = intense;//update;
-            idata.data[ind + 1] = intense;//update;
-            idata.data[ind + 2] = intense;//update;
-        }
-        ctx.putImageData(idata, 0, 0);
-        document.getElementById('gallery').appendChild(c);
-        }, 200);
+            
+            var c = document.createElement("canvas");
+            
+            var width = 1024;
+            var height = width * img.height / img.width;
+            
+            c.width = width;
+            c.height = height;
+            console.log("width = " + img.width);
+            var ctx = c.getContext("2d");
+
+            ctx.drawImage(img, 0, 0, img.width, img.height, 0, 0, width, height);
+
+            var idata = ctx.getImageData(0, 0, width, height);
+
+            var ind;
+            var intense;
+            var update;
+            var base;
+            var step = 16; 
+            var scale = 16;
+            for (var y = 0; y < height; y ++)
+            for (var x = 0; x < width; x ++) {
+                ind = (y * width + x) * 4;
+                intense = (idata.data[ind] + idata.data[ind + 1] + idata.data[ind + 2]) / 3;
+                base = x % step > 7 ? 230 : 25;
+                if ((x % step === 0) || (x % step === (step - 1)) || (x % step === 7) || (x % step === 8)) base = 128;
+                update = base + (128 + intense) / scale;
+                idata.data[ind] = update;
+                idata.data[ind + 1] = update;
+                idata.data[ind + 2] = update;
+            }
+            ctx.putImageData(idata, 0, 0);
+
+            document.getElementById('gallery').appendChild(c);
+        }, 300);
     }
 }
