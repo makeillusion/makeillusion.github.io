@@ -68,13 +68,15 @@ function previewFile(file) {
         var intense;
         var update;
         var base;
+        var step = 16; 
+        var scale = 35;
         for (var y = 0; y < img.height; y ++)
         for (var x = 0; x < img.width; x ++) {
             ind = (y * img.width + x) * 4;
             intense = idata.data[ind] + idata.data[ind + 1] + idata.data[ind + 2];
-            base = x % 16 > 7 ? 230 : 25;
-            if ((x % 16 === 0) || (x % 16 === 15) || (x % 16 === 7) || (x % 16 === 8)) base = 128;
-            update = base + (128 + intense) / 35;
+            base = x % step > 7 ? 230 : 25;
+            if ((x % step === 0) || (x % step === (step - 1)) || (x % step === 7) || (x % step === 8)) base = 128;
+            update = base + (128 + intense) / scale;
             idata.data[ind] = update;
             idata.data[ind + 1] = update;
             idata.data[ind + 2] = update;
