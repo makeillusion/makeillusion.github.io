@@ -5,12 +5,14 @@
     </head>
     <body>
         <div id="drop-area">
-          <form class="my-form">
-            <p>Upload image with the file dialog or by dragging and dropping image onto the dashed region</p>
-            <input type="file" id="fileElem" accept="image/*" onchange="handleFiles(this.files)">
-            <label class="button" for="fileElem">Select image</label>
-          </form>
-          <div id="gallery" /></div>
+            <form class="upload-form">
+                <div class="upload-text">
+                    Upload image with the file dialog or by dragging and dropping image onto the dashed region
+                </div>
+                <input type="file" id="fileElem" accept="image/*" onchange="handleFiles(this.files)">
+                <label class="upload-button" for="fileElem">Select image</label>
+            </form>
+            <div id="gallery" /></div>
         </div>
         <script src="main.js"></script>
     </body>

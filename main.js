@@ -56,7 +56,6 @@ function previewFile(file) {
         document.getElementById('gallery').appendChild(img)
         
         setTimeout(() => {
-            
             var c = document.createElement("canvas");
             
             var width = 1024;
@@ -81,8 +80,10 @@ function previewFile(file) {
             for (var x = 0; x < width; x ++) {
                 ind = (y * width + x) * 4;
                 intense = (idata.data[ind] + idata.data[ind + 1] + idata.data[ind + 2]) / 3;
-                base = x % step > 7 ? 230 : 25;
-                if ((x % step === 0) || (x % step === (step - 1)) || (x % step === 7) || (x % step === 8)) base = 128;
+                base = x % step > (step/2 - 1) ? 230 : 25;
+                if ((x % step === 0) || (x % step === (step - 1)) || (x % step === (step/2 - 1)) || (x % step === (step/2))) {
+                    base = 128;
+                }
                 update = base + (128 + intense) / scale;
                 idata.data[ind] = update;
                 idata.data[ind + 1] = update;
