@@ -79,10 +79,11 @@ $("#result-close").off().on('click', function () {
 $("#result-save").off().on('click', function () {
     var dt = canvas.toDataURL('image/png');
     /* Change MIME type to trick the browser to downlaod the file instead of displaying it */
-    dt = dt.replace(/^data:image\/[^;]*/, 'data:application/octet-stream');
-    /* In addition to <a>'s "download" attribute, you can define HTTP-style headers */
-    dt = dt.replace(/^data:application\/octet-stream/, 'data:application/octet-stream;headers=Content-Disposition%3A%20attachment%3B%20filename=illusion.png');
+    //dt = dt.replace(/^data:image\/[^;]*/, 'data:application/octet-stream');
     window.open(dt);
+    /* In addition to <a>'s "download" attribute, you can define HTTP-style headers */
+    //dt = dt.replace(/^data:application\/octet-stream/, 'data:application/octet-stream;headers=Content-Disposition%3A%20attachment%3B%20filename=illusion.png');
+    //window.open(dt);
 });
 
 function previewFile(file) {
@@ -105,6 +106,7 @@ function previewFile(file) {
             ctx.putImageData(idata, 0, 0);
 
             jQuery('#result').addClass('_visible');
+            jQuery('a').attr('href', canvas.toDataURL('image/png'));
         };
         img.src = reader.result;
     }
