@@ -1,7 +1,10 @@
 <html>
     <head>
         <title>Illusion</title>
-        <link rel="stylesheet" type="text/css" href="/main.css">
+        <link rel="stylesheet" type="text/css" href="./main.css">
+        <script src="./jquery-3.3.1.min.js"></script>
+        <script src="./canvasToBlob.js"></script>
+        <script src="./fileSaver.js"></script>
     </head>
     <body>
         <div id="drop-area">
@@ -10,10 +13,14 @@
                     Upload image with the file dialog or by dragging and dropping image onto the dashed region
                 </div>
                 <input type="file" id="fileElem" accept="image/*" onchange="handleFiles(this.files)">
-                <label class="upload-button" for="fileElem">Select image</label>
+                <label id="upload-button" class="button" for="fileElem">Select image</label>
             </form>
-            <div id="gallery" /></div>
         </div>
-        <script src="/main.js"></script>
+        <div id="result"/>
+            <div id="result-close" class="button">CLOSE</div>
+            <div id="result-save"class="button">SAVE</div>
+
+        </div>
+        <script src="./main.js"></script>
     </body>
 </html>

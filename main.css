@@ -1,17 +1,18 @@
 body {
     font-family: sans-serif;
+    font-size: 22pt;
 }
 
 #drop-area {
     border: 2px dashed #ccc;
     border-radius: 20px;
-    width: calc (100% - 100px);
+    width: calc(100% - 100px);
     margin: 50px;
     padding: 20px;
 }
 
 #drop-area.highlight {
-    border-color: purple;
+    border-color: #4444ff;
 }
 
 .upload-form {
@@ -28,23 +29,47 @@ body {
     text-align: center;
 }
 
-.upload-button {
+.button {
     text-align: center;
     display: inline-block;
-    margin: 10px 20px;
     padding: 20px;
-    width: calc(100% - 80px);
     background: #fff;
     cursor: pointer;
     border-radius: 5px;
     border: 1px solid #ccc;
 }
 
-.upload-button:hover {
+.button:hover {
     background: #fafafa;
     color: black;
 }
 
+#upload-button {
+    margin: 10px 20px;
+    width: calc(100% - 80px);
+}
+
 #fileElem {
     display: none;
+}
+
+#result {
+    display: none;
+    flex-direction: column;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: calc(100% - 80px);
+    height: calc(100% - 80px);
+    padding: 40px;
+    background: white;
+    overflow: scroll;
+}
+
+#result .button {
+    margin: 0 0 40px 0;
+}
+
+#result._visible {
+    display: flex;
 }
