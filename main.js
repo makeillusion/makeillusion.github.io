@@ -82,10 +82,10 @@ $("#result-save").off().on('click', function () {
     //});
     var dt = canvas.toDataURL('image/png');
     /* Change MIME type to trick the browser to downlaod the file instead of displaying it */
-    dt = dt.replace(/^data:image\/[^;]*/, 'data:application/octet-stream');
+    dt = dt.replace(/^data:image\/[^;]*/, 'data:image/octet-stream');
 
     /* In addition to <a>'s "download" attribute, you can define HTTP-style headers */
-    dt = dt.replace(/^data:application\/octet-stream/, 'data:application/octet-stream;headers=Content-Disposition%3A%20attachment%3B%20filename=illusion.png');
+    dt = dt.replace(/^data:application\/octet-stream/, 'data:image/octet-stream;headers=Content-Disposition%3A%20attachment%3B%20filename=illusion.png');
 
     window.open(dt);
     //window.href = dt;
