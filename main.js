@@ -47,18 +47,17 @@ function handleFiles(files) {
 }
 
 function processIII(idata, width, height) {
-    var ind;
-    var intense;
-    var update;
-    var base;
+    var ind, residue, intense, update, base;
     var step = 16;
     var scale = 16;
     for (var y = 0; y < height; y++)
         for (var x = 0; x < width; x++) {
             ind = (y * width + x) * 4;
             intense = (idata.data[ind] + idata.data[ind + 1] + idata.data[ind + 2]) / 3;
-            base = x % step > (step / 2 - 1) ? 230 : 25;
-            if ((x % step === 0) || (x % step === (step - 1)) || (x % step === (step / 2 - 1)) || (x % step === (step / 2))) {
+            residue = (x + 4) % step;
+            base = residue > (step / 2 - 1) ? 230 : 25;
+
+            if ((residue === 0) || (residue === (step - 1)) || (residue === (step / 2 - 1)) || (residue === (step / 2))) {
                 base = 128;
             }
             update = base + (128 + intense) / scale;
@@ -99,6 +98,7 @@ function previewFile(file) {
             var idata = ctx.getImageData(0, 0, width, height);
 
             idata = processIII(idata, width, height);
+
             ctx.putImageData(idata, 0, 0);
 
             jQuery('#result').addClass('_visible');
