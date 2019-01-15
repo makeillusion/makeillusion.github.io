@@ -77,8 +77,20 @@ body {
     margin: 0 0 40px 0;
 }
 
+#result-close {
+    background: #ff4433;
+    border-color: #cc3322;
+    color: white;
+}
+
+#result-close:hover {
+    background: #ee4433;
+}
+
 #result-save {
     background: #33bb44;
+    border-color: #119933;
+    text-decoration: none;
     color: white;
 }
 

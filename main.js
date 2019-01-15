@@ -76,22 +76,17 @@ $("#result-close").off().on('click', function () {
     jQuery('#result').removeClass('_visible');
 });
 
-$("#result-save").off().on('click', function () {
+$("#result-open").off().on('click', function () {
     var dt = canvas.toDataURL('image/png');
-    /* Change MIME type to trick the browser to downlaod the file instead of displaying it */
-    //dt = dt.replace(/^data:image\/[^;]*/, 'data:application/octet-stream');
     window.open(dt);
-    /* In addition to <a>'s "download" attribute, you can define HTTP-style headers */
-    //dt = dt.replace(/^data:application\/octet-stream/, 'data:application/octet-stream;headers=Content-Disposition%3A%20attachment%3B%20filename=illusion.png');
-    //window.open(dt);
 });
 
 function previewFile(file) {
-    let reader = new FileReader();
-    reader.readAsDataURL(file);
-    reader.onloadend = function () {
-        var img = new Image();
-        img.onload = function () {
+    //let reader = new FileReader();
+    loadImage(file, function (img) {
+        //canvas = img;
+        //var img = new Image();
+        //img.onload = function () {
             var width = 1024;
             var height = width * img.height / img.width;
             canvas.width = width;
@@ -107,7 +102,8 @@ function previewFile(file) {
 
             jQuery('#result').addClass('_visible');
             jQuery('a').attr('href', canvas.toDataURL('image/png'));
-        };
-        img.src = reader.result;
-    }
+        //};
+        //img.src = reader.result;
+        jQuery('#fileElem').val(null);
+    }, {orientation: 1})
 }
