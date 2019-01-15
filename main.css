@@ -69,6 +69,10 @@ body {
     overflow: scroll;
 }
 
+#result._visible {
+    display: flex;
+}
+
 #result .button {
     margin: 0 0 40px 0;
 }
@@ -82,7 +86,7 @@ body {
     background: #22aa44;
 }
 
-
-#result._visible {
-    display: flex;
+#result canvas {
+    width: 50%;
+    margin: auto;
 }
