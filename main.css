@@ -92,11 +92,18 @@ body {
     display: flex;
 }
 
-#result .button {
+#result .block {
     max-width: 900px;
     margin: auto;
     width: calc(100% - 40px);
     margin-bottom: 40px;
+}
+
+#result-info.block {
+    color: #666;
+    line-height: 1.5;
+    max-width: 940px;
+    font-weight: 100;
 }
 
 #result-close {
@@ -127,7 +134,8 @@ body {
 }
 
 .effects-selector {
-    overflow: scroll;
+    overflow-x: auto;
+    overflow-y: hidden;
     height: 200px;
     background: white;
     margin: 0;
