@@ -1,19 +1,20 @@
 body {
     font-family: sans-serif;
-    font-weight: 600;
-    font-size: 26pt;
+    font-weight: 400;
+    font-size: 22pt;
 }
 
 #drop-area {
     border: 2px dashed #ccc;
     border-radius: 20px;
-    width: calc(100% - 100px);
+    width: calc(100% - 140px);
     margin: 50px;
     padding: 20px;
 }
 
 #drop-area.highlight {
-    border-color: #4444ff;
+    border-color: #FF6F61;
+    background: #FFEFE1;
 }
 
 .upload-form {
@@ -40,6 +41,8 @@ body {
     cursor: pointer;
     border-radius: 5px;
     border: 1px solid #ccc;
+    font-weight: 600;
+    font-size: 26pt;
 }
 
 .button:hover {
@@ -78,27 +81,80 @@ body {
 }
 
 #result-close {
-    background: #ff4433;
-    border-color: #cc3322;
+    background: #FF6F61;
+    border-color: #FF6F61;
     color: white;
 }
 
 #result-close:hover {
-    background: #ee4433;
+    background: #FF5F61;
 }
 
 #result-save {
-    background: #33bb44;
-    border-color: #119933;
+    background: #00AF8D;
+    border-color: #00AF8D;
     text-decoration: none;
     color: white;
 }
 
 #result-save:hover {
-    background: #22aa44;
+    background: #00AF9D;
 }
 
 #result canvas {
     width: 50%;
     margin: auto;
+}
+
+.effects-selector {
+    overflow: scroll;
+    height: 200px;
+    background: white;
+    margin: 0 50px;
+}
+
+.effects-selector__wrapper {
+    display: flex;
+    flex-direction: row;
+}
+
+.effects-selector__item {
+    display: flex;
+    margin: auto 10px;
+    min-width: 160px;
+    width: 160px;
+    height: 160px;
+    background: lightgray;
+}
+
+.effects-selector__item {
+    border-radius: 88px;
+    background-size: cover;
+}
+
+.effects-selector__item._selected {
+    border: 8px solid #FF6F61;
+}
+
+.effects-selector__item._horizontal {
+    background: url('./images/effect1.jpg') center;
+}
+
+.effects-selector__item._vertical {
+    background: url('./images/effect2.jpg') center;
+}
+
+.effects-selector__item._zigzag {
+    background: url('./images/effect3.jpg') center;
+}
+
+
+.effect-description {
+    color: #FF6F61;
+    padding-top: 10px;
+    text-align: center;
+}
+
+.effect-intro {
+    padding: 20px 50px;
 }
