@@ -194,47 +194,55 @@ $("#result-open").off().on('click', function () {
 
 function previewFile(file) {
     dropArea.classList.remove('active');
-    loadImage(file, function (img) {
-        var width = 1024;
-        var height = width * img.height / img.width;
-        canvas.width = width;
-        canvas.height = height;
-        var ctx = canvas.getContext('2d');
-
-        ctx.drawImage(img, 0, 0, img.width, img.height, 0, 0, width, height);
-        var idata = ctx.getImageData(0, 0, width, height);
-
-        switch (selectedEffect) {
-            case 'horizontal':
-                idata = processIII(idata, width, height);
-                break;
-            case 'vertical':
-                idata = process___(idata, width, height);
-                break;
-            case 'zigzag':
-                idata = processZZZ(idata, width, height);
-                break;
-            case 'dots':
-                idata = processOOO(idata, width, height);
-                break;
-            case 'idots':
-                idata = processOOO(idata, width, height, true);
-                break;
-            case 'circles':
-                idata = processOo(idata, width, height);
-                break;
-            case 'waves':
-                idata = processSSS(idata, width, height);
-                break;
+    loadImage.parseMetaData(file, function (data) {
+        var orientation = 0;
+        //if exif data available, update orientation
+        if (data.exif) {
+            orientation = data.exif.get('Orientation');
         }
 
-        ctx.putImageData(idata, 0, 0);
+        loadImage(file, function (img) {
+            var width = 1024;
+            var height = width * img.height / img.width;
+            canvas.width = width;
+            canvas.height = height;
+            var ctx = canvas.getContext('2d');
 
-        jQuery('#result').addClass('_visible');
-        jQuery('a').attr('href', canvas.toDataURL('image/png'));
+            ctx.drawImage(img, 0, 0, img.width, img.height, 0, 0, width, height);
+            var idata = ctx.getImageData(0, 0, width, height);
 
-        jQuery('#fileElem').val(null);
-    }, {orientation: 1})
+            switch (selectedEffect) {
+                case 'horizontal':
+                    idata = processIII(idata, width, height);
+                    break;
+                case 'vertical':
+                    idata = process___(idata, width, height);
+                    break;
+                case 'zigzag':
+                    idata = processZZZ(idata, width, height);
+                    break;
+                case 'dots':
+                    idata = processOOO(idata, width, height);
+                    break;
+                case 'idots':
+                    idata = processOOO(idata, width, height, true);
+                    break;
+                case 'circles':
+                    idata = processOo(idata, width, height);
+                    break;
+                case 'waves':
+                    idata = processSSS(idata, width, height);
+                    break;
+            }
+
+            ctx.putImageData(idata, 0, 0);
+
+            jQuery('#result').addClass('_visible');
+            jQuery('a').attr('href', canvas.toDataURL('image/png'));
+
+            jQuery('#fileElem').val(null);
+        }, {orientation: orientation});
+    });
 }
 
 function updateDescription() {
