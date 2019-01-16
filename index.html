@@ -14,7 +14,7 @@
     <link rel="apple-touch-icon" sizes="144x144" href="./ico/apple-icon-144x144.png">
     <link rel="apple-touch-icon" sizes="152x152" href="./ico/apple-icon-152x152.png">
     <link rel="apple-touch-icon" sizes="180x180" href="./ico/apple-icon-180x180.png">
-    <link rel="icon" type="image/png" sizes="192x192"  href="./ico/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="./ico/android-icon-192x192.png">
     <link rel="icon" type="image/png" sizes="32x32" href="./ico/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="96x96" href="./ico/favicon-96x96.png">
     <link rel="icon" type="image/png" sizes="16x16" href="./ico/favicon-16x16.png">
@@ -24,9 +24,10 @@
     <meta name="theme-color" content="#ffffff">
 </head>
 <body>
+<div class="body-container">
     <div class="body-wrapper">
         <div class="body-heading">Turn the image into an optical illusion</div>
-        <div class="effect-intro">Select the illusion type:</div>
+        <div class="effect-intro">Scroll horizontally and select the type <img src="./images/point.png"/></div>
         <div class="effects-selector">
             <div class="effects-selector__wrapper">
                 <div class="effects-selector__item _horizontal _selected">
@@ -38,6 +39,10 @@
                 <div class="effects-selector__item _dots">
                 </div>
                 <div class="effects-selector__item _idots">
+                </div>
+                <div class="effects-selector__item _circles">
+                </div>
+                <div class="effects-selector__item _waves">
                 </div>
             </div>
         </div>
@@ -52,17 +57,32 @@
                     <label id="upload-button" class="button" for="fileElem">Select image</label>
                 </form>
             </div>
-            <div id="result">
-                <div id="result-close" class="button block">Close</div>
-                <div id="result-info" class="block">
-                    Now you can upload the resulting image<br>(use the "Open in a new tab" button if the image does not load)
-                </div>
-                <a id="result-save" class="button block" download="illusion.png">Download</a>
-                <div id="result-open" class="button block">Open in a new tab (for IOS)</div>
+            <div class="information-box">
+                There are number of popular "hidden image" illusions on the Internet. Like <a target="_blank" href="http://www.moillusions.com/wp-content/uploads/1.bp.blogspot.com/_cxmptAPYR-s/Rgaa5KgQbWI/AAAAAAAAAiM/5daHyzsad5s/s400/Lennon+Illusion.jpg">John Lennon</a>, <a target="_blank" href="https://cdn.24.co.za/files/Cms/General/d/5939/479cbc527bc941019ee0a5ff98a0390b.jpg">WWF Panda</a> or <a target="_blank" href="https://www.msn.com/en-ca/lifestyle/whats-hot/theres-an-animal-hiding-in-this-optical-illusion-but-you-have-to-shake-your-head-to-see-it/ar-BBSat02">Hidden Animal illusion</a> that's taking over the Internet last week.
+                <br/><br/>
+                How about to create your own one?
+                <br/><br/>
+                Just select the image and here it is. You can download the result. The tool is absolutely FREE.
+                <br/><br/>
+                To see the hidden image step away from the screen, zoom it out, or shake your head fast.
+                The image is almost completely invisible if viewing strait on and semi close.
+                <br/>
+            </div>
+
+            <div class="about-footer">
+                &#169; Fyodor Guryanov, 2019 | <a target="_blank" href="https://www.producthunt.com/@fedorguryanov">Product Hunt</a> | <a target="_blank" href="https://twitter.com/guryanoff">Twitter</a> | <a target="_blank" href="https://www.linkedin.com/in/fedor-guryanov-00aba410a/">LinkedIn</a>
             </div>
         </div>
     </div>
-
-    <script src="./main.js"></script>
+</div>
+<div id="result">
+    <div id="result-close" class="button block">Close</div>
+    <div id="result-info" class="block">
+        You can now download the resulting image<br>(use the "Open in a new tab" button if the image does not load)
+    </div>
+    <a id="result-save" class="button block" download="illusion.png">Download</a>
+    <div id="result-open" class="button block">Open in a new tab (for IOS devices)</div>
+</div>
+<script src="./main.js"></script>
 </body>
 </html>

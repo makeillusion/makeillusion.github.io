@@ -62,7 +62,6 @@ function processIII(idata, width, height) {
             idata.data[ind + 1] = update;
             idata.data[ind + 2] = update;
         }
-
     return idata;
 }
 
@@ -82,7 +81,6 @@ function process___(idata, width, height) {
             idata.data[ind + 1] = update;
             idata.data[ind + 2] = update;
         }
-
     return idata;
 }
 
@@ -108,7 +106,6 @@ function processZZZ(idata, width, height) {
             idata.data[ind + 1] = update;
             idata.data[ind + 2] = update;
         }
-
     return idata;
 }
 
@@ -136,9 +133,50 @@ function processOOO(idata, width, height, invert) {
             idata.data[ind + 1] = update;
             idata.data[ind + 2] = update;
         }
-
     return idata;
 }
+
+function processOo(idata, width, height) {
+    var ind, intense, update, base;
+    var step = 16;
+    var scale = 10;
+    var yd, xd;
+    for (var y = 0; y < height; y++)
+        for (var x = 0; x < width; x++) {
+            ind = (y * width + x) * 4;
+            intense = (idata.data[ind] + idata.data[ind + 1] + idata.data[ind + 2]) / 3;
+
+            yd = y - height / 2;
+            xd = x - width / 2;
+
+            base = (Math.round(Math.sqrt((xd * xd) + (yd * yd))) % step) < (step / 2) ? 25 : 230;
+
+            update = base + (128 + intense) / scale;
+            idata.data[ind] = update;
+            idata.data[ind + 1] = update;
+            idata.data[ind + 2] = update;
+        }
+    return idata;
+}
+
+function processSSS(idata, width, height) {
+    var ind, intense, update, base;
+    var scale = 10;
+    for (var y = 0; y < height; y++)
+        for (var x = 0; x < width; x++) {
+            ind = (y * width + x) * 4;
+            intense = (idata.data[ind] + idata.data[ind + 1] + idata.data[ind + 2]) / 3;
+
+            base = (Math.sin((x / 2 + Math.sin(y / 7)))) <= 0 ? 25 : 230;
+
+            update = base + (128 + intense) / scale;
+            idata.data[ind] = update;
+            idata.data[ind + 1] = update;
+            idata.data[ind + 2] = update;
+        }
+    return idata;
+}
+
 
 var selectedEffect = "horizontal";
 
@@ -182,6 +220,12 @@ function previewFile(file) {
             case 'idots':
                 idata = processOOO(idata, width, height, true);
                 break;
+            case 'circles':
+                idata = processOo(idata, width, height);
+                break;
+            case 'waves':
+                idata = processSSS(idata, width, height);
+                break;
         }
 
         ctx.putImageData(idata, 0, 0);
@@ -210,6 +254,12 @@ function updateDescription() {
             break;
         case 'idots':
             text = 'Small white circles pattern';
+            break;
+        case 'circles':
+            text = 'Concentric circles pattern';
+            break;
+        case 'waves':
+            text = 'Waves pattern';
             break;
     }
     $('.effect-description').html(text);
@@ -249,5 +299,17 @@ $('.effects-selector__item._dots').off().on('click', function () {
 $('.effects-selector__item._idots').off().on('click', function () {
     updateSelection('_idots');
     selectedEffect = "idots";
+    updateDescription();
+});
+
+$('.effects-selector__item._circles').off().on('click', function () {
+    updateSelection('_circles');
+    selectedEffect = "circles";
+    updateDescription();
+});
+
+$('.effects-selector__item._waves').off().on('click', function () {
+    updateSelection('_waves');
+    selectedEffect = "waves";
     updateDescription();
 });
