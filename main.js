@@ -57,9 +57,6 @@ function processIII(idata, width, height) {
             residue = (x + 4) % step;
             base = residue > (step / 2 - 1) ? 230 : 25;
 
-            if ((residue === 0) || (residue === (step - 1)) || (residue === (step / 2 - 1)) || (residue === (step / 2))) {
-            //    base = 128;
-            }
             update = base + (128 + intense) / scale;
             idata.data[ind] = update;
             idata.data[ind + 1] = update;
@@ -80,9 +77,6 @@ function process___(idata, width, height) {
             residue = (y + 4) % step;
             base = residue > (step / 2 - 1) ? 230 : 25;
 
-            if ((residue === 0) || (residue === (step - 1)) || (residue === (step / 2 - 1)) || (residue === (step / 2))) {
-            //    base = 128;
-            }
             update = base + (128 + intense) / scale;
             idata.data[ind] = update;
             idata.data[ind + 1] = update;
@@ -105,12 +99,9 @@ function processZZZ(idata, width, height) {
             if (y % wise < (wise / 2)) {
                 residue = step - (width + y - x) % step;
             } else {
-                //residue = (y - x) % step;
                 residue = (y + x) % step;
             }
-
             base = residue > (step / 2 - 1) ? 230 : 25;
-
 
             update = base + (128 + intense) / scale;
             idata.data[ind] = update;

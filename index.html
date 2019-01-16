@@ -1,9 +1,27 @@
 <html>
 <head>
-    <title>Make Illusion</title>
+    <title>Make an illusion</title>
     <link rel="stylesheet" type="text/css" href="./main.css">
     <script src="./jquery-3.3.1.min.js"></script>
     <script src="./load-image.all.min.js"></script>
+
+    <link rel="apple-touch-icon" sizes="57x57" href="./ico/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="./ico/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="./ico/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="./ico/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="./ico/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="./ico/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="./ico/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="./ico/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="./ico/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192"  href="./ico/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./ico/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="./ico/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./ico/favicon-16x16.png">
+    <link rel="manifest" href="./ico/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
 </head>
 <body>
     <div class="body-wrapper">
@@ -31,13 +49,13 @@
                         Upload image with the file dialog or by dragging and dropping image onto the dashed region
                     </div>
                     <input type="file" id="fileElem" accept="image/*" onchange="handleFiles(this.files)">
-                    <label id="upload-button" class="button" for="fileElem">SELECT IMAGE</label>
+                    <label id="upload-button" class="button" for="fileElem">Select image</label>
                 </form>
             </div>
             <div id="result">
-                <div id="result-close" class="button">CLOSE</div>
-                <a id="result-save" class="button" download="illusion.png">DOWNLOAD</a>
-                <div id="result-open" class="button">OPEN IN NEW TAB (for IOS)</div>
+                <div id="result-close" class="button">Close</div>
+                <a id="result-save" class="button" download="illusion.png">Download</a>
+                <div id="result-open" class="button">Open in a new tab (for IOS)</div>
             </div>
         </div>
     </div>
