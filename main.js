@@ -154,11 +154,11 @@ var selectedEffect = "horizontal";
 var canvas = document.createElement('canvas');
 jQuery('#result').append(canvas);
 
-$("#result-close").off().on('click', function () {
+$("#result-close").off().on('tap', function () {
     jQuery('#result').removeClass('_visible');
 });
 
-$("#result-open").off().on('click', function () {
+$("#result-open").off().on('tap', function () {
     var dt = canvas.toDataURL('image/png');
     window.open(dt);
 });
@@ -231,31 +231,31 @@ function updateSelection(modifier) {
     $('.effects-selector__item.' + modifier).addClass('_selected');
 }
 
-$('.effects-selector__item._horizontal').off().on('click', function () {
+$('.effects-selector__item._horizontal').off().on('tap', function () {
     updateSelection('_horizontal');
     selectedEffect = "horizontal";
     updateDescription();
 });
 
-$('.effects-selector__item._vertical').off().on('click', function () {
+$('.effects-selector__item._vertical').off().on('tap', function () {
     updateSelection('_vertical');
     selectedEffect = "vertical";
     updateDescription();
 });
 
-$('.effects-selector__item._zigzag').off().on('click', function () {
+$('.effects-selector__item._zigzag').off().on('tap', function () {
     updateSelection('_zigzag');
     selectedEffect = "zigzag";
     updateDescription();
 });
 
-$('.effects-selector__item._dots').off().on('click', function () {
+$('.effects-selector__item._dots').off().on('tap', function () {
     updateSelection('_dots');
     selectedEffect = "dots";
     updateDescription();
 });
 
-$('.effects-selector__item._idots').off().on('click', function () {
+$('.effects-selector__item._idots').off().on('tap', function () {
     updateSelection('_idots');
     selectedEffect = "idots";
     updateDescription();
