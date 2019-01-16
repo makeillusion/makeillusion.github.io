@@ -6,48 +6,39 @@
     <script src="./load-image.all.min.js"></script>
 </head>
 <body>
-    <div class="effect-intro">Select the illusion type:</div>
-    <div class="effects-selector">
-        <div class="effects-selector__wrapper">
-            <div class="effects-selector__item _horizontal _selected">
-            </div>
-            <div class="effects-selector__item _vertical">
-            </div>
-            <div class="effects-selector__item _zigzag">
-            </div>
-            <div class="effects-selector__item">
-            </div>
-            <div class="effects-selector__item">
-            </div>
-            <div class="effects-selector__item">
-            </div>
-            <div class="effects-selector__item">
-            </div>
-            <div class="effects-selector__item">
-            </div>
-            <div class="effects-selector__item">
-            </div>
-            <div class="effects-selector__item">
-            </div>
-            <div class="effects-selector__item">
-            </div>
-        </div>
-    </div>
-    <div class="page">
-        <div class="effect-description"></div>
-        <div id="drop-area">
-            <form class="upload-form">
-                <div class="upload-text">
-                    Upload image with the file dialog or by dragging and dropping image onto the dashed region
+    <div class="body-wrapper">
+        <div class="body-heading">Turn the image into an optical illusion</div>
+        <div class="effect-intro">Select the illusion type:</div>
+        <div class="effects-selector">
+            <div class="effects-selector__wrapper">
+                <div class="effects-selector__item _horizontal _selected">
                 </div>
-                <input type="file" id="fileElem" accept="image/*" onchange="handleFiles(this.files)">
-                <label id="upload-button" class="button" for="fileElem">SELECT IMAGE</label>
-            </form>
+                <div class="effects-selector__item _vertical">
+                </div>
+                <div class="effects-selector__item _zigzag">
+                </div>
+                <div class="effects-selector__item _dots">
+                </div>
+                <div class="effects-selector__item _idots">
+                </div>
+            </div>
         </div>
-        <div id="result">
-            <div id="result-close" class="button">CLOSE</div>
-            <a id="result-save" class="button" download="illusion.png">DOWNLOAD</a>
-            <div id="result-open" class="button">OPEN IN NEW TAB (for IOS)</div>
+        <div class="page">
+            <div class="effect-description"></div>
+            <div id="drop-area">
+                <form class="upload-form">
+                    <div class="upload-text">
+                        Upload image with the file dialog or by dragging and dropping image onto the dashed region
+                    </div>
+                    <input type="file" id="fileElem" accept="image/*" onchange="handleFiles(this.files)">
+                    <label id="upload-button" class="button" for="fileElem">SELECT IMAGE</label>
+                </form>
+            </div>
+            <div id="result">
+                <div id="result-close" class="button">CLOSE</div>
+                <a id="result-save" class="button" download="illusion.png">DOWNLOAD</a>
+                <div id="result-open" class="button">OPEN IN NEW TAB (for IOS)</div>
+            </div>
         </div>
     </div>
     <script src="./main.js"></script>

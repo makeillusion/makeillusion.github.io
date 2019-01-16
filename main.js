@@ -121,6 +121,33 @@ function processZZZ(idata, width, height) {
     return idata;
 }
 
+function processOOO(idata, width, height, invert) {
+    var ind, intense, update, base;
+    var step = 16;
+    var scale = 16;
+    var yd, xd;
+    for (var y = 0; y < height; y++)
+        for (var x = 0; x < width; x++) {
+            ind = (y * width + x) * 4;
+            intense = (idata.data[ind] + idata.data[ind + 1] + idata.data[ind + 2]) / 3;
+
+            yd = (y % step < (step / 2)) ? y % step : step - y % step;
+            xd = (x % step < (step / 2)) ? x % step : step - x % step;
+
+            if (invert) {
+                base = ((xd * xd) + (yd * yd)) > 25 ? 25 : 230;
+            } else {
+                base = ((xd * xd) + (yd * yd)) > 25 ? 230 : 25;
+            }
+
+            update = base + (128 + intense) / scale;
+            idata.data[ind] = update;
+            idata.data[ind + 1] = update;
+            idata.data[ind + 2] = update;
+        }
+
+    return idata;
+}
 
 var selectedEffect = "horizontal";
 
@@ -158,6 +185,12 @@ function previewFile(file) {
             case 'zigzag':
                 idata = processZZZ(idata, width, height);
                 break;
+            case 'dots':
+                idata = processOOO(idata, width, height);
+                break;
+            case 'idots':
+                idata = processOOO(idata, width, height, true);
+                break;
         }
 
         ctx.putImageData(idata, 0, 0);
@@ -173,13 +206,19 @@ function updateDescription() {
     var text = '';
     switch (selectedEffect) {
         case 'horizontal':
-            text = 'Horizontal Lines Illusion';
+            text = 'Horizontal lines pattern';
             break;
         case 'vertical':
-            text = 'Vertical Lines Illusion';
+            text = 'Vertical lines pattern';
             break;
         case 'zigzag':
-            text = 'Zigzag Lines Illusion';
+            text = 'Zigzag lines pattern';
+            break;
+        case 'dots':
+            text = 'Small black circles pattern';
+            break;
+        case 'idots':
+            text = 'Small white circles pattern';
             break;
     }
     $('.effect-description').html(text);
@@ -207,5 +246,17 @@ $('.effects-selector__item._vertical').off().on('click', function () {
 $('.effects-selector__item._zigzag').off().on('click', function () {
     updateSelection('_zigzag');
     selectedEffect = "zigzag";
+    updateDescription();
+});
+
+$('.effects-selector__item._dots').off().on('click', function () {
+    updateSelection('_dots');
+    selectedEffect = "dots";
+    updateDescription();
+});
+
+$('.effects-selector__item._idots').off().on('click', function () {
+    updateSelection('_idots');
+    selectedEffect = "idots";
     updateDescription();
 });

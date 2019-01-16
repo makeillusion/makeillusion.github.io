@@ -2,13 +2,28 @@ body {
     font-family: sans-serif;
     font-weight: 400;
     font-size: 22pt;
+    margin: 0;
+}
+
+.body-wrapper {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 940px;
+    padding: 20px;
+}
+
+.body-heading {
+    color: #FF6F61;
+    padding: 40px 0;
+    font-weight: 600;
+    font-size: 32pt;
 }
 
 #drop-area {
     border: 2px dashed #ccc;
     border-radius: 20px;
-    width: calc(100% - 140px);
-    margin: 50px;
+    width: calc(100% - 40px);
+    margin: 50px 0;
     padding: 20px;
 }
 
@@ -77,7 +92,10 @@ body {
 }
 
 #result .button {
-    margin: 0 0 40px 0;
+    max-width: 900px;
+    margin: auto;
+    width: calc(100% - 40px);
+    margin-bottom: 40px;
 }
 
 #result-close {
@@ -102,15 +120,16 @@ body {
 }
 
 #result canvas {
-    width: 50%;
+    max-width: 940px;
     margin: auto;
+    width: 100%;
 }
 
 .effects-selector {
     overflow: scroll;
     height: 200px;
     background: white;
-    margin: 0 50px;
+    margin: 0;
 }
 
 .effects-selector__wrapper {
@@ -120,7 +139,7 @@ body {
 
 .effects-selector__item {
     display: flex;
-    margin: auto 10px;
+    margin: auto 12px;
     min-width: 160px;
     width: 160px;
     height: 160px;
@@ -148,13 +167,21 @@ body {
     background: url('./images/effect3.jpg') center;
 }
 
+.effects-selector__item._dots {
+    background: url('./images/effect4.jpg') center;
+}
+
+.effects-selector__item._idots {
+    background: url('./images/effect5.jpg') center;
+}
 
 .effect-description {
     color: #FF6F61;
-    padding-top: 10px;
+    padding-top: 20px;
     text-align: center;
+    font-weight: 600;
 }
 
 .effect-intro {
-    padding: 20px 50px;
+    padding: 20px 0;
 }
