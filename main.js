@@ -238,7 +238,7 @@ function previewFile(file) {
             ctx.putImageData(idata, 0, 0);
 
             jQuery('#result').addClass('_visible');
-            jQuery('a').attr('href', canvas.toDataURL('image/png'));
+            jQuery('#result-save').attr('href', canvas.toDataURL('image/png'));
 
             jQuery('#fileElem').val(null);
         }, {orientation: orientation});
